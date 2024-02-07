@@ -5,13 +5,14 @@
   "description": "[![Actions Status](https://github.com/ZakharBlinov/frontend-project-44/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/ZakharBlinov/frontend-project-44/actions)",
   "main": "index.js",
   "scripts": {
-  "test": "echo \"Error: no test specified\" && exit 1",
-  "lint": "npx eslint ."
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "npx eslint ."
   },
   "author": "",
   "license": "ISC",
   "bin": {
-    "brain-games": "bin/brain-games.js"
+    "brain-games": "bin/brain-games.js",
+    "brain-even": "bin/brain-even.js"
   },
   "dependencies": {
     "readline-sync": "^1.4.10"

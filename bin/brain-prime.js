@@ -39,7 +39,7 @@ const isPrime = (num) => {
       correctAnswersCount += 1;
     }
   
-    console.log(`Congratulations, ${name} !`);
+    console.log(`Congratulations, ${name}!`);
   };
   
   PlayPrimeGame();

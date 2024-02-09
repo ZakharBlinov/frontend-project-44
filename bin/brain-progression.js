@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+/* eslint-disable no-console */
 
 import readlineSync from 'readline-sync';
 
@@ -26,11 +27,11 @@ const playProgressionGame = (name) => {
     const progression = generateProgression(length, start, difference);
     const correctAnswer = progression[hiddenIndex];
     progression[hiddenIndex] = '..';
-    
+
     console.log(`Question: ${progression.join(' ')}`);
 
     const userAnswer = readlineSync.question('Your answer: ');
-    
+
     if (Number(userAnswer) === correctAnswer) {
       console.log('Correct!');
       correctAnswersCount += 1;
@@ -48,4 +49,3 @@ const playProgressionGame = (name) => {
 
 const playerName = readlineSync.question('May I have your name? ');
 playProgressionGame(playerName);
-

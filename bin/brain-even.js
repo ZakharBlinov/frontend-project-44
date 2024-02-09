@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+/* eslint-disable no-console */
 
 import readlineSync from 'readline-sync';
 
@@ -28,4 +29,3 @@ while (correctAnswersCount < 3) {
 if (correctAnswersCount === 3) {
   console.log(`Congratulations, ${name}!`);
 }
-

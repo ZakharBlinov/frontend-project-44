@@ -30,7 +30,6 @@ const playCalculatorGame = () => {
   console.log('What is the result of the expression?');
 
   const roundsCount = 3;
-  let correctAnswersCount = 0;
 
   for (let i = 0; i < roundsCount; i += 1) {
     const num1 = getRandomNumber(1, 100);
@@ -43,7 +42,6 @@ const playCalculatorGame = () => {
 
     if (Number(userAnswer) === correctAnswer) {
       console.log('Correct!');
-      correctAnswersCount += 1;
     } else {
       console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
       console.log(`Let's try again, ${name}!`);

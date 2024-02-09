@@ -15,7 +15,6 @@ function playGCDGame() {
   console.log(`Hello, ${name}!`);
   console.log('Find the greatest common divisor of given numbers.');
 
-  let correctAnswersCount = 0;
   const roundsCount = 3;
 
   for (let i = 0; i < roundsCount; i += 1) {
@@ -28,7 +27,6 @@ function playGCDGame() {
 
     if (Number(userAnswer) === correctAnswer) {
       console.log('Correct!');
-      correctAnswersCount += 1;
     } else {
       console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
       console.log(`Let's try again, ${name}!`);

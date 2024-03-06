@@ -1,30 +1,14 @@
-import readlineSync from 'readline-sync';
+#!/usr/bin/env node
 
-export default () => {
-  console.log('Welcome to the Brain Games!');
-  const name = readlineSync.question('May I have your name? ');
-  console.log(`Hello, ${name}! Answer "yes" if the number is even, otherwise answer "no".`);
+import driver from '../index.js';
+import getRandomNumber from './random.js';
 
-  let correctAnswersCount = 0;
-
-  while (correctAnswersCount < 3) {
-    const randomNumber = Math.floor(Math.random() * 100);
-    console.log(`Question: ${randomNumber}`);
-    const userAnswer = readlineSync.question('Your answer: ');
-
-    const isEven = randomNumber % 2 === 0;
-    const correctAnswer = isEven ? 'yes' : 'no';
-
-    if (userAnswer.toLowerCase() === correctAnswer) {
-      console.log('Correct!');
-      correctAnswersCount += 1;
-    } else {
-      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'. Let's try again, ${name}!`);
-      break;
-    }
-  }
-
-  if (correctAnswersCount === 3) {
-    console.log(`Congratulations, ${name}!`);
-  }
+const isEven = (num) => num % 2 === 0;
+const question = 'Answer "yes" if the number is even, otherwise answer "no".';
+const playGame = () => {
+  const questionTwo = getRandomNumber(0, 10);
+  const rightAnswer = isEven(questionTwo) ? 'yes' : 'no';
+  return { rightAnswer, questionTwo };
 };
+const playEvenGame = () => driver(playGame, question);
+export default playEvenGame;

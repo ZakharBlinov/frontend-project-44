@@ -1,51 +1,31 @@
-import readlineSync from 'readline-sync';
+#!/usr/bin/env node
 
-const getRandomNumber = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+import playGame from '../index.js';
+import getRandomNumber from './random.js';
 
-const getRandomOperator = () => {
-  const operators = ['+', '-', '*'];
-  const randomIndex = getRandomNumber(0, operators.length - 1);
-  return operators[randomIndex];
-};
-
-const calculateExpression = (num1, num2, operator) => {
-  switch (operator) {
+const calculation = (randomNamber1, randomNamber2, operation) => {
+  switch (operation) {
     case '+':
-      return num1 + num2;
+      return randomNamber1 + randomNamber2;
     case '-':
-      return num1 - num2;
+      return randomNamber1 - randomNamber2;
     case '*':
-      return num1 * num2;
+      return randomNamber1 * randomNamber2;
     default:
-      return null;
+      throw new Error(`Unknown order state: '${operation}'!`);
   }
 };
-
-export default () => {
-  console.log('Welcome to the Brain Games!');
-  const name = readlineSync.question('May I have your name? ');
-  console.log(`Hello, ${name}!`);
-  console.log('What is the result of the expression?');
-
-  const roundsCount = 3;
-
-  for (let i = 0; i < roundsCount; i += 1) {
-    const num1 = getRandomNumber(1, 100);
-    const num2 = getRandomNumber(1, 100);
-    const operator = getRandomOperator();
-    const correctAnswer = calculateExpression(num1, num2, operator);
-
-    console.log(`Question: ${num1} ${operator} ${num2}`);
-    const userAnswer = readlineSync.question('Your answer: ');
-
-    if (Number(userAnswer) === correctAnswer) {
-      console.log('Correct!');
-    } else {
-      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
-      console.log(`Let's try again, ${name}!`);
-      return;
-    }
-  }
-
-  console.log(`Congratulations, ${name}!`);
+const question = 'What is the result of the expression?';
+const runGame = () => {
+  const operations = ['+', '-', '*'];
+  const operationIndex = getRandomNumber(0, 3);
+  const randomNamber1 = getRandomNumber(0, 10);
+  const randomNamber2 = getRandomNumber(0, 10);
+  const operation = operations[operationIndex];
+  const questionTwo = `${randomNamber1} ${operation} ${randomNamber2}`;
+  const rightAnswer = calculation(randomNamber1, randomNamber2, operation).toString();
+  return { rightAnswer, questionTwo };
 };
+const playCalcGame = () => playGame(runGame, question);
+
+export default playCalcGame;

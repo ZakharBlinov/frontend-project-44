@@ -1,7 +1,6 @@
-/* eslint-disable no-shadow */
 const getRandomNumber = (min, max) => {
-  const getRandomNumber = Math.floor(Math.random() * (max - min) + min);
-  return getRandomNumber;
+  const randomNumber = Math.floor(Math.random() * (max - min) + min);
+  return randomNumber;
 };
 
 export default getRandomNumber;
